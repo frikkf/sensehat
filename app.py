@@ -21,7 +21,7 @@ from telemetry import Telemetry
 # is 25 minutes. For more information, see:
 # https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging
 TIMEOUT = 241000
-MINIMUM_POLLING_TIME = 9
+MINIMUM_POLLING_TIME = 20
 
 # messageTimeout - the maximum time in milliseconds until a message times out.
 # The timeout period starts at IoTHubClient.send_event_async.
