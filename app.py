@@ -59,7 +59,7 @@ telemetry = Telemetry()
 #    print ( "You need to provide the device connection string as command line arguments." )
 #    telemetry.send_telemetry_data(None, EVENT_FAILED, "Device connection string is not provided")
 #    sys.exit(0)
-*/
+
 def is_correct_connection_string():
     m = re.search("HostName=.*;DeviceId=.*;", CONNECTION_STRING)
     if m:
