@@ -67,7 +67,7 @@ def is_correct_connection_string():
     else:
         return False
 
-CONNECTION_STRING = sys.argv[1]
+CONNECTION_STRING = 'HostName=frikksiothub.azure-devices.net;DeviceId=frikk-rbpi;SharedAccessKey=WG/0OY0mGErtrFSiYTj/c4KcMVfqxFErxB72F+OcXqU='
 
 if not is_correct_connection_string():
     print ( "Device connection string is not correct." )
@@ -192,10 +192,7 @@ def iothub_client_sample_run():
             reported_state = "{\"newState\":\"standBy\"}"
             client.send_reported_state(reported_state, len(reported_state), send_reported_state_callback, SEND_REPORTED_STATE_CONTEXT)
 
-        if not config.SIMULATED_DATA:
-            sensor = BME280(address = config.I2C_ADDRESS)
-        else:
-            sensor = BME280SensorSimulator()
+        sensor = SenseHatDataFetcher()
 
         telemetry.send_telemetry_data(parse_iot_hub_name(), EVENT_SUCCESS, "IoT hub connection is established")
         while True:
@@ -248,8 +245,5 @@ def parse_iot_hub_name():
     m = re.search("HostName=(.*?)\.", CONNECTION_STRING)
     return m.group(1)
 
-if __name__ == "__main__":
-    print ( "\nPython %s" % sys.version )
-    print ( "IoT Hub Client for Python" )
 
-    iothub_client_sample_run()
+iothub_client_sample_run()

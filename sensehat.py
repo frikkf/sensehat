@@ -5,8 +5,6 @@ import sys
 import iothub_client
 from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
 from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError, DeviceMethodReturnValue
-from iothub_client import IoTHubClientRetryPolicy, GetRetryPolicyReturnValue
-from iothub_client_args import get_iothub_opt, OptionError
 
 
 sense = SenseHat()

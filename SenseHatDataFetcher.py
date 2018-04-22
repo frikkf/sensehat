@@ -4,7 +4,7 @@ import random
 from sense_hat import SenseHat
 
 
-class BME280SensorSimulator:
+class SenseHatDataFetcher:
     def __init__(self):
         pass
 
