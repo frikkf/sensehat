@@ -68,7 +68,7 @@ if not is_correct_connection_string():
     telemetry.send_telemetry_data(None, EVENT_FAILED, "Device connection string is not correct.")
     sys.exit(0)
 
-MSG_TXT = "{\"deviceId\": \"Raspberry Pi - Python\",\"temperature\": %f,\"humidity\": %f}"
+MSG_TXT = "{\"deviceId\": \"Frikk RaspBerry Pi Python\",\"temperature\": %f,\"humidity\": %f}"
 
 def receive_message_callback(message, counter):
     global RECEIVE_CALLBACKS
@@ -219,11 +219,6 @@ def iothub_client_sample_run():
         print ( "IoTHubClient sample stopped" )
 
     print_last_message_time(client)
-
-def usage():
-    print ( "Usage: iothub_client_sample.py -p <protocol> -c <connectionstring>" )
-    print ( "    protocol        : <amqp, amqp_ws, http, mqtt, mqtt_ws>" )
-    print ( "    connectionstring: <HostName=<host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>>" )
 
 def parse_iot_hub_name():
     m = re.search("HostName=(.*?)\.", CONNECTION_STRING)
