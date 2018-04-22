@@ -10,7 +10,7 @@ import sys
 from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
 from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError, DeviceMethodReturnValue
 import config as config
-from BME280SensorSimulator import BME280SensorSimulator
+from SenseHatDataFetcher import SenseHatDataFetcher
 import RPi.GPIO as GPIO
 from Adafruit_BME280 import *
 import re
