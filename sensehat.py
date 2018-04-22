@@ -13,4 +13,4 @@ print("Humidity"+str(humidity))
 print("Temp"+str(temp))
 print("Pressure"+str(pressure))
 
-sense.show_message(temp)
+sense.show_message(str(temp))
