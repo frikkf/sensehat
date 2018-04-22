@@ -11,7 +11,6 @@ from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvid
 from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError, DeviceMethodReturnValue
 import config as config
 from SenseHatDataFetcher import SenseHatDataFetcher
-import RPi.GPIO as GPIO
 from Adafruit_BME280 import *
 import re
 from telemetry import Telemetry
@@ -54,11 +53,7 @@ PROTOCOL = IoTHubTransportProvider.MQTT
 # String containing Hostname, Device Id & Device Key in the format:
 # "HostName=<host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"
 telemetry = Telemetry()
-#
-#if len(sys.argv) < 2:
-#    print ( "You need to provide the device connection string as command line arguments." )
-#    telemetry.send_telemetry_data(None, EVENT_FAILED, "Device connection string is not provided")
-#    sys.exit(0)
+
 
 def is_correct_connection_string():
     m = re.search("HostName=.*;DeviceId=.*;", CONNECTION_STRING)
@@ -75,9 +70,6 @@ if not is_correct_connection_string():
     sys.exit(0)
 
 MSG_TXT = "{\"deviceId\": \"Raspberry Pi - Python\",\"temperature\": %f,\"humidity\": %f}"
-
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(config.GPIO_PIN_ADDRESS, GPIO.OUT)
 
 def receive_message_callback(message, counter):
     global RECEIVE_CALLBACKS
@@ -230,11 +222,6 @@ def iothub_client_sample_run():
         print ( "IoTHubClient sample stopped" )
 
     print_last_message_time(client)
-
-def led_blink():
-    GPIO.output(config.GPIO_PIN_ADDRESS, GPIO.HIGH)
-    time.sleep(config.BLINK_TIMESPAN / 1000.0)
-    GPIO.output(config.GPIO_PIN_ADDRESS, GPIO.LOW)
 
 def usage():
     print ( "Usage: iothub_client_sample.py -p <protocol> -c <connectionstring>" )
